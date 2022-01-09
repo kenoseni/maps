@@ -1,7 +1,3 @@
-import { User } from './User';
-
-import { Company } from './Company';
-
 // instructions to every other class
 // on how how they can be an argument to 'addMarker'
 interface Mappable {
@@ -22,12 +18,23 @@ export class CustomMap {
   }
 
   addMarker(mappable: Mappable): void {
-    new google.maps.Marker({
+    const marker = new google.maps.Marker({
       map: this.googleMap,
       position: {
         lat: mappable.location.lat,
         lng: mappable.location.lng
       }
+    })
+
+    marker.addListener('click', () => {
+      const infoWindow = new google.maps.InfoWindow({
+        content: 'Hello World',
+      });
+      infoWindow.open({
+        anchor: marker,
+        map: this.googleMap,
+        shouldFocus: false,
+      });
     })
   }
 }
