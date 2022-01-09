@@ -12,7 +12,7 @@ const company = new Company()
 
 const customMap = new CustomMap('map')
 
-customMap.addUserMArker(user)
+customMap.addMarker(user)
 
-customMap.addCompanyMArker(company)
+customMap.addMarker(company)
 
